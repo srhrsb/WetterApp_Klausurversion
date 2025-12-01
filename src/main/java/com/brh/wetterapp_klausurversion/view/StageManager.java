@@ -27,6 +27,11 @@ public class StageManager {
         return instance;
     }
 
+    /**
+     * Setzt den MainStage und sorgt dafür, dass das Programm endet, falls
+     * die MainStage beendet wird
+     * @param stage Stage
+     */
     public void setMainStage( Stage stage ){
         stages[0] = stage;
         stages[0].setOnCloseRequest(
@@ -34,6 +39,13 @@ public class StageManager {
         );
     }
 
+    /**
+     * JeweiligeScene wird geladen und ein Stage wird erzeugt mit der gegebenen
+     * Breite und Höhe
+     * @param stageType Enum Stage Type
+     * @param width Breite
+     * @param height Höhe
+     */
     public void setScene(StageType stageType, int width, int height){
 
         if(stages[stageType.ordinal()] == null){
@@ -43,6 +55,7 @@ public class StageManager {
             );
         }
 
+        //Scene holen
         Scene scene = getScene(SCENE_NAMES[stageType.ordinal()], width, height);
 
         if(stageType == StageType.Main) {
@@ -56,6 +69,13 @@ public class StageManager {
         stages[stageType.ordinal()].show();
     }
 
+    /**
+     * Lädt die Scene mit gegebenem Namen und gibt diese zurück
+     * @param viewName Name der Scene
+     * @param width Breite
+     * @param height Höhe
+     * @return geladene Scene
+     */
     private Scene getScene(String viewName, int width, int height){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource( viewName ));

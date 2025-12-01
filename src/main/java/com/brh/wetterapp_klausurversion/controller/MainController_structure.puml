@@ -1,0 +1,203 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.brh.wetterapp_klausurversion.controller.MainController",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_97816 { 
+   	label=brh
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_416940340 { 
+   	label=wetterapp_klausurversion
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   APIHelper1156471060[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)APIHelper</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ apiIsAvailable(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ jsonArrayOfType(jsonArray: JSONArray): List&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ loadCache(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ parseApiResponse(json: String): ApiResponse</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveCache(json: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ApiRequest1156471060[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ApiRequest</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   callback: Consumer&lt;ApiResponse&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- handleApiResponse(apiResponse: HttpResponse&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ sendRequest(longitude: Double, latitude: Double, callback: Consumer&lt;ApiResponse&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ApiResponse1156471060[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ApiResponse</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   currRain: Double [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   currTemperature: Double [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   currWind: Double [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rain: List&lt;Double&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   temp: List&lt;Double&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   time: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   wind: List&lt;Double&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ currRain(): Double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ currTemperature(): Double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ currWind(): Double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ rain(): List&lt;Double&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ temp(): List&lt;Double&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ time(): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ wind(): List&lt;Double&gt;</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MainController1329135761[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MainController</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   rainLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   temperatureLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   windLabel: Label [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   xOffset: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   yOffset: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ initialize()</TD></TR>
+<TR><TD ALIGN="LEFT" >- openAdditionalWindow(stageType: StageType, width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" ># openChart()</TD></TR>
+<TR><TD ALIGN="LEFT" ># openOptions()</TD></TR>
+<TR><TD ALIGN="LEFT" >- showCurrentValues(response: ApiResponse)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+StageManager1561588570[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)StageManager</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   SCENE_NAMES: String[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   stages: Stage[] [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ closeStageByStageType(type: StageType)</TD></TR>
+<TR><TD ALIGN="LEFT" >- getScene(viewName: String, width: int, height: int): Scene</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStageByStageType(type: StageType): Stage</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+ApiRequest1156471060 -> ApiResponse1156471060[label="callback
+[0..1]"];
+MainController1329135761 -> ApiRequest1156471060[label="update() -> sendRequest()"];
+    
+}
+@enduml

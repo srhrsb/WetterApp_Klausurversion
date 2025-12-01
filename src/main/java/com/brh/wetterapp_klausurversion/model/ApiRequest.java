@@ -10,6 +10,13 @@ import java.util.function.Consumer;
 
 public class ApiRequest {
     private Consumer<ApiResponse> callback;
+
+    /**
+     * Sendet Anfrage an die Wetter-API
+     * @param longitude Longitude
+     * @param latitude Latitude
+     * @param callback Callback
+     */
     public void sendRequest(Double longitude, Double latitude, Consumer<ApiResponse> callback) {
         this.callback = callback;
 
@@ -47,6 +54,13 @@ public class ApiRequest {
         }
     }
 
+
+    /**
+     * Auswertung ob es sich um eine erfolgreiche Anfrage handelt
+     * falls das so ist, wird die Antwort über eine Hilfsmethode
+     * in ein Objekt mit den entsprechenden Daten gewandelt
+     * @param apiResponse
+     */
     private void handleApiResponse(HttpResponse<String> apiResponse) {
         if (apiResponse.statusCode() == 200) {
              System.out.println(apiResponse.body());

@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ * Der Settingsmanager verwaltet, speichert stellt die 3 Settings
+ * longitude, latitude und updateFrquency zur Verfügung
+ */
 public class SettingsManager {
     private final String SETTINGS_PATH = "settings.json";
 
@@ -43,6 +47,12 @@ public class SettingsManager {
         return updateFrequency;
     }
 
+    /**
+     * Setzt alle Settings und speichert diese
+     * @param latitude Latitude
+     * @param longitude Longitude
+     * @param updateFrequency Updatefrequenz
+     */
     public void setAll(double latitude, double longitude, long updateFrequency) {
         this.latitude = latitude;
         this.longitude = longitude;
@@ -50,6 +60,9 @@ public class SettingsManager {
         saveSettings();
     }
 
+    /**
+     * Lädt die Settings aus dem Settings-File
+     */
     private void loadSettings(){
         try {
             String json = Files.readString(
@@ -67,6 +80,9 @@ public class SettingsManager {
         }
     }
 
+    /**
+     * Speichert die Settings im Json-Format
+     */
     private void saveSettings(){
 
         try (FileWriter fileWriter = new FileWriter(SETTINGS_PATH)) {
