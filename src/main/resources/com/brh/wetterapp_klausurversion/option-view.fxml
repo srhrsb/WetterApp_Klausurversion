@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brh.wetterapp_klausurversion.controller.OptionController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <children>
+      <HBox prefHeight="31.0" prefWidth="560.0">
+         <children>
+            <Label prefHeight="18.0" prefWidth="73.0" text="Update" />
+            <Label fx:id="updateTimeLabel" layoutX="10.0" layoutY="10.0" prefHeight="18.0" prefWidth="59.0" text="120 min" />
+            <Slider fx:id="updateFrequencySlider" blockIncrement="1.0" max="360.0" min="1.0" onMouseDragReleased="#onChangeUpdateSlider" onMouseReleased="#onChangeUpdateSlider" prefHeight="14.0" prefWidth="350.0" value="1.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="30.0" layoutY="102.0" prefHeight="26.0" prefWidth="560.0" spacing="10.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="78.0" text="Location" />
+            <Label layoutX="272.0" layoutY="10.0" prefHeight="26.0" prefWidth="48.0" text="Latitude" />
+            <TextField fx:id="latitudeTf" prefHeight="26.0" prefWidth="112.0" />
+            <Label layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="61.0" text="Longitude" />
+            <TextField fx:id="longitudeTf" layoutX="160.0" layoutY="10.0" prefHeight="26.0" prefWidth="112.0" />
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_LEFT" prefHeight="54.0" prefWidth="560.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#onUseClick" text="Anwenden" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
