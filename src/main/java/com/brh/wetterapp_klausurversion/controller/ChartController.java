@@ -4,18 +4,11 @@ import com.brh.wetterapp_klausurversion.model.APIHelper;
 import com.brh.wetterapp_klausurversion.model.ApiResponse;
 import com.brh.wetterapp_klausurversion.view.StageManager;
 import com.brh.wetterapp_klausurversion.view.StageType;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
+
 
 public class ChartController {
     @FXML
@@ -29,6 +22,9 @@ public class ChartController {
 
     private final int CHART_RESOLUTION = 4;
 
+    /**
+     * Initialisiert und weist die Daten (Regen, Wind, Temperartur) zu
+     */
     @FXML
     private void initialize(){
         String json = APIHelper.loadCache();
@@ -38,11 +34,21 @@ public class ChartController {
         setChartData(windChart, data.time(), data.wind());
     }
 
+    /**
+     * Schließt das Chart-Fenster nach Event des Schliessen-Buttons
+     */
     @FXML
     protected void closeChart(){
         StageManager.getInstance().closeStageByStageType(StageType.Chart);
     }
 
+
+    /**
+     * Setzt die Chartdaten
+     * @param chart der Chart der gesetzt werden soll
+     * @param time Liste mit den Zeiten (7 * 24 Zeitpunkte)
+     * @param data Liste mit den Daten (7 * 24 Daten)
+     */
     private void setChartData( LineChart chart, List<String> time, List<Double> data){
         XYChart.Series series = new XYChart.Series();
         series.setName("7-Tage Vorschau (Auflösung: "+CHART_RESOLUTION+"h)");
@@ -53,6 +59,5 @@ public class ChartController {
         }
 
         chart.getData().add(series);
-
     }
 }

@@ -23,12 +23,19 @@ public class MainController {
     @FXML
     private Label rainLabel;
 
+    /**
+     * Bei Erstellung der Klasse durch JavaFX aufgerufen
+     */
     public void initialize(){
         App.setMainController(this);
         update();
         Platform.runLater(this::setDragDrop);
     }
 
+    /**
+     * Setzt die aktuellen Daten aus der API-Antwort
+     * @param response
+     */
     private void showCurrentValues( ApiResponse response ){
         Platform.runLater(()->{
             String t = response.currTemperature().toString();
@@ -40,16 +47,30 @@ public class MainController {
         });
     }
 
+
+    /**
+     * Optionen-Fenster öffnen
+     */
     @FXML
     protected void openOptions(){
         openAdditionalWindow( StageType.Option, 500,200 );
     }
 
+    /**
+     * Chart-Fenster öffnen
+     */
     @FXML
     protected void openChart(){
         openAdditionalWindow( StageType.Chart, 1200, 600 );
     }
 
+    /**
+     * Erzeugt ein neues Stage des gegebenen Typen, vorausgesetzt, es ist nicht
+     * bereits eines geöffnet
+     * @param stageType Enum StageType
+     * @param width int Breite
+     * @param height int Höhe
+     */
     private void openAdditionalWindow(StageType stageType, int width, int height ){
         boolean optionExists = StageManager.getInstance().getStageByStageType(StageType.Option) != null;
         boolean chartExists = StageManager.getInstance().getStageByStageType(StageType.Chart) != null;
@@ -60,6 +81,12 @@ public class MainController {
         );
     }
 
+
+    /**
+     * Aktualisiert die Wetterdaten durch eine neue API-Anfrage
+     * Diese Methode ruft sich über den Scheduler zeitversetzt
+     * selbst wieder auf
+     */
     public  void update( ){
         double longitude = SettingsManager.getInstance().getLongitude();
         double latitude = SettingsManager.getInstance().getLatitude();
@@ -69,6 +96,10 @@ public class MainController {
         new Scheduler( this::update ).start();
     }
 
+
+    /**
+     * Macht das Main-Fenster verschiebbar
+     */
     private void setDragDrop( ){
         Stage stage = StageManager.getInstance().getStageByStageType(StageType.Main);
         Scene scene = stage.getScene();
