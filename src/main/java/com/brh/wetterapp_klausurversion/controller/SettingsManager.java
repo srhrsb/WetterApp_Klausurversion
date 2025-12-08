@@ -9,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * Der Settingsmanager verwaltet, speichert stellt die 3 Settings
+ * Der Settingsmanager verwaltet, speichert und stellt die 3 Settings
  * longitude, latitude und updateFrquency zur Verfügung
  */
 public class SettingsManager {
