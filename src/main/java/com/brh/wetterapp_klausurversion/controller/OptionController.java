@@ -3,6 +3,7 @@ package com.brh.wetterapp_klausurversion.controller;
 import com.brh.wetterapp_klausurversion.App;
 import com.brh.wetterapp_klausurversion.view.StageManager;
 import com.brh.wetterapp_klausurversion.view.StageType;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -56,5 +57,11 @@ public class OptionController {
         catch(Exception e){
             throw new RuntimeException(e);
         }
+    }
+
+    public void onSetBerlinClick(ActionEvent actionEvent) {
+        latitudeTf.setText( "52.52437");
+        longitudeTf.setText("13.41503");
+
     }
 }

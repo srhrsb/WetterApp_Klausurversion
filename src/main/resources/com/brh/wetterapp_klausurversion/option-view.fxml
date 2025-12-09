@@ -32,6 +32,7 @@
       <HBox alignment="BOTTOM_LEFT" prefHeight="54.0" prefWidth="560.0" spacing="20.0">
          <children>
             <Button mnemonicParsing="false" onAction="#onUseClick" text="Anwenden" />
+             <Button mnemonicParsing="false" onAction="#onSetBerlinClick" text="Berlin" />
          </children>
       </HBox>
    </children>

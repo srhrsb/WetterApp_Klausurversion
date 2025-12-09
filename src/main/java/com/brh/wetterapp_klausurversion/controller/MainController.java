@@ -114,4 +114,9 @@ public class MainController {
             stage.setY(event.getScreenY() - yOffset);
         });
     }
+
+    public void onCloseClick(){
+        StageManager.getInstance().closeStageByStageType(StageType.Main);
+        Platform.exit();
+    }
 }

@@ -74,4 +74,5 @@
          </graphic>
       </Button>
    </children>
+    <Button mnemonicParsing="false" onAction="#onCloseClick" text="Schließen" />
 </VBox>
