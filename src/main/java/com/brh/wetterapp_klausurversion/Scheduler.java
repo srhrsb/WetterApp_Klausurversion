@@ -7,10 +7,14 @@ import java.util.function.Consumer;
 public class Scheduler extends Thread {
     private UpdateCallback updateCallback;
 
-    public Scheduler( UpdateCallback updateCallback  ){
+    public Scheduler( UpdateCallback updateCallback ){
        this.updateCallback = updateCallback;
     }
 
+    /**
+     * Wartet die im Settings-Manager gespeichert Update-Rate und
+     * führt dann das Callback aus
+     */
     @Override
     public void run(){
         try {

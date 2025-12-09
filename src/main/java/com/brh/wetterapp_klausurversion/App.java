@@ -18,6 +18,8 @@ public class App extends Application {
     public void start(Stage stage){
         StageManager.getInstance().setMainStage(stage);
         StageManager.getInstance().setScene( StageType.Main, 100, 700 );
+
+
     }
 
     /**

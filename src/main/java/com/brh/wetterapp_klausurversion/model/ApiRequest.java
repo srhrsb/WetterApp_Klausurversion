@@ -7,7 +7,9 @@ import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-
+/**
+ * Sorgt für die Anfrage bei der Wetter-API
+ */
 public class ApiRequest {
     private Consumer<ApiResponse> callback;
 

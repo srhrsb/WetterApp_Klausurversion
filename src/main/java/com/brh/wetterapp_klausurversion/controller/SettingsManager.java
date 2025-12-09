@@ -1,4 +1,5 @@
 package com.brh.wetterapp_klausurversion.controller;
+import com.brh.wetterapp_klausurversion.view.StageManager;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

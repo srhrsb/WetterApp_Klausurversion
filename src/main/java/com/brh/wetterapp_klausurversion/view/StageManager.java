@@ -10,12 +10,14 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
+/**
+ * Singleton Klasse zur Verwaltung der 3 Stages (Main, Option, Chart)
+ */
 public class StageManager {
 
     private static StageManager instance;
     private Stage[] stages = new Stage[3];
-    private final String[] SCENE_NAMES = {"main-view.fxml", "option-view.fxml", "chart-view.fxml" };
-
+    private final String[] SCENE_NAMES = {"main-view.fxml", "option-view.fxml", "chart-view.fxml"  };
 
     private StageManager(){}
 
@@ -50,6 +52,8 @@ public class StageManager {
 
         if(stages[stageType.ordinal()] == null){
             stages[stageType.ordinal()] = new Stage();
+
+
             stages[stageType.ordinal()].setOnCloseRequest(
                     (ev) ->  stages[stageType.ordinal()] = null
             );
@@ -85,10 +89,19 @@ public class StageManager {
         }
     }
 
+    /**
+     * Holt den jeweiligen Stage unter Angabe des StageTypes
+     * @param type
+     * @return Stage
+     */
     public Stage getStageByStageType( StageType type ){
         return stages[ type.ordinal() ];
     }
 
+    /**
+     * Schließt und löscht den jeweilgen Stage unter Angabe des StageTypes
+     * @param type
+     */
     public void closeStageByStageType( StageType type ){
         stages[ type.ordinal() ].close();
         stages[ type.ordinal()] = null;

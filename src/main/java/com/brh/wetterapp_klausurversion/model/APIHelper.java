@@ -17,6 +17,10 @@ public class APIHelper {
 
     private static final String CACHE_PATH = "offlineCache.json";
 
+    /**
+     * Prüft ob die Wetter-API verfügbar ist
+     * @return true oder false, je nach Verfügbarkeit
+     */
     public static boolean apiIsAvailable() {
         try {
             HttpURLConnection connection =
@@ -33,6 +37,10 @@ public class APIHelper {
         }
     }
 
+    /**
+     * Speichert das gegebene Json in die Cache-Datei
+     * @param json
+     */
     public static void saveCache(String json) {
         try (FileWriter writer = new FileWriter(CACHE_PATH)) {
             writer.write(json);
@@ -41,6 +49,10 @@ public class APIHelper {
         }
     }
 
+    /**
+     * Lädt Json-Daten aus der Cache-Datei
+     * @return
+     */
     public static String loadCache() {
         try {
             return Files.readString(
@@ -51,6 +63,11 @@ public class APIHelper {
         }
     }
 
+    /**
+     * Parst die Antwort der Wetter-API (gegeben als json) in ein Object (Record)
+     * @param json
+     * @return APIResponse
+     */
     public static ApiResponse parseApiResponse(String json) {
 
         try {
@@ -88,6 +105,13 @@ public class APIHelper {
         }
     }
 
+    /**
+     * Generische Methode, wandelt ein JSONArray (SimpleJsonFramework) in eine List um
+     * unter Angabe des jeweiligen Datentyps
+     * @param jsonArray JSONArray
+     * @return Liste des entsprechenden Typs
+     * @param <T> Typ, welcher in der List gespeichert wird
+     */
     public static <T> List<T> jsonArrayOfType( JSONArray jsonArray ){
         List<T> list = new ArrayList<>();
 
