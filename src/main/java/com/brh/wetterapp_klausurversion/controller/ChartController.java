@@ -7,6 +7,8 @@ import com.brh.wetterapp_klausurversion.view.StageType;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+
 import java.util.List;
 
 
@@ -20,6 +22,13 @@ public class ChartController {
     @FXML
     private LineChart windChart;
 
+    @FXML
+    private Label averageTemperature;
+    @FXML
+    private Label averageRain;
+    @FXML
+    private Label averageWind;
+
     private final int CHART_RESOLUTION = 4;
 
     /**
@@ -32,6 +41,10 @@ public class ChartController {
         setChartData(temperatureChart, data.time(), data.temp());
         setChartData(rainChart, data.time(), data.rain());
         setChartData(windChart, data.time(), data.wind());
+
+        showAverage( averageTemperature, "Durchschnitt Temperatur: ", data.temp());
+        showAverage( averageRain, "Durchschnitt Regen: ", data.rain());
+        showAverage( averageWind, "Durchschnitt Wind: ", data.wind());
     }
 
     /**
@@ -59,5 +72,16 @@ public class ChartController {
         }
 
         chart.getData().add(series);
+    }
+
+    private void showAverage( Label label, String text, List<Double>data){
+        Double total = 0.0;
+
+        int i;
+        for( i= 0 ; i < data.size(); i++ ){
+            total += ((Number)data.get(i)).doubleValue();
+        }
+
+        label.setText(text + total/i);
     }
 }
