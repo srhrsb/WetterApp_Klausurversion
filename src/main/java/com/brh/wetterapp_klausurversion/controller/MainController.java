@@ -7,6 +7,7 @@ import com.brh.wetterapp_klausurversion.model.ApiResponse;
 import com.brh.wetterapp_klausurversion.view.StageManager;
 import com.brh.wetterapp_klausurversion.view.StageType;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -22,7 +23,8 @@ public class MainController {
     private Label windLabel;
     @FXML
     private Label rainLabel;
-
+    @FXML
+    private Label geoLabel;
     /**
      * Bei Erstellung der Klasse durch JavaFX aufgerufen
      */
@@ -90,6 +92,8 @@ public class MainController {
     public  void update( ){
         double longitude = SettingsManager.getInstance().getLongitude();
         double latitude = SettingsManager.getInstance().getLatitude();
+        geoLabel.setText( longitude +"/"+latitude);
+
         System.out.println("update request lng: "+longitude+" lat: "+latitude);
         ApiRequest request = new ApiRequest();
         request.sendRequest(longitude, latitude, this::showCurrentValues );
@@ -118,5 +122,10 @@ public class MainController {
     public void onCloseClick(){
         StageManager.getInstance().closeStageByStageType(StageType.Main);
         Platform.exit();
+    }
+
+    public void onClickOpenInfo(ActionEvent actionEvent) {
+
+        openAdditionalWindow(StageType.Info, 500, 300);
     }
 }

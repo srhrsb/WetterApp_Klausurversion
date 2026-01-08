@@ -26,19 +26,19 @@ public class OptionController {
      * Setzt die gespeicherten Daten aus dem Settings-Manager in die UI-Elemente
      */
     public void initialize() {
-        latitudeTf.setText( Double.toString( SettingsManager.getInstance().getLatitude() ) );
-        longitudeTf.setText( Double.toString( SettingsManager.getInstance().getLongitude() ) );
-        updateFrequencySlider.setValue( SettingsManager.getInstance().getUpdateFrequency() );
+        latitudeTf.setText(Double.toString(SettingsManager.getInstance().getLatitude()));
+        longitudeTf.setText(Double.toString(SettingsManager.getInstance().getLongitude()));
+        updateFrequencySlider.setValue(SettingsManager.getInstance().getUpdateFrequency());
     }
 
     /**
      * Aktualisierung der Anzeige für die Update-Rate
      */
     @FXML
-    protected void onChangeUpdateSlider(){
-       updateTimeLabel.setText(
-               (int)updateFrequencySlider.getValue() + " min"
-       );
+    protected void onChangeUpdateSlider() {
+        updateTimeLabel.setText(
+                (int) updateFrequencySlider.getValue() + " min"
+        );
     }
 
     /**
@@ -46,21 +46,20 @@ public class OptionController {
      * und zeitgleich findet die Aktualisierung statt
      */
     @FXML
-    protected void onUseClick(){
+    protected void onUseClick() {
         try {
-            double longitude = Double.parseDouble( longitudeTf.getText() );
-            double latitude = Double.parseDouble( latitudeTf.getText() );
-            long frequency = (long)updateFrequencySlider.getValue();
-            SettingsManager.getInstance().setAll( latitude, longitude, frequency);
+            double longitude = Double.parseDouble(longitudeTf.getText());
+            double latitude = Double.parseDouble(latitudeTf.getText());
+            long frequency = (long) updateFrequencySlider.getValue();
+            SettingsManager.getInstance().setAll(latitude, longitude, frequency);
             App.getMainController().update();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
     public void onSetBerlinClick(ActionEvent actionEvent) {
-        latitudeTf.setText( "52.52437");
+        latitudeTf.setText("52.52437");
         longitudeTf.setText("13.41503");
 
     }

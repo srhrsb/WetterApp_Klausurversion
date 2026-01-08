@@ -75,4 +75,14 @@
       </Button>
    </children>
     <Button mnemonicParsing="false" onAction="#onCloseClick" text="Schließen" />
+    <Button mnemonicParsing="false" onAction="#onClickOpenInfo" text="Info" />
+
+    <Label fx:id="geoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="32.0" prefWidth="90.0" text="-" textAlignment="CENTER" wrapText="true">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+
+
+
 </VBox>

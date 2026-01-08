@@ -16,8 +16,8 @@ import java.io.IOException;
 public class StageManager {
 
     private static StageManager instance;
-    private Stage[] stages = new Stage[3];
-    private final String[] SCENE_NAMES = {"main-view.fxml", "option-view.fxml", "chart-view.fxml"  };
+    private Stage[] stages = new Stage[4];
+    private final String[] SCENE_NAMES = {"main-view.fxml", "option-view.fxml", "chart-view.fxml", "info-view.fxml"  };
 
     private StageManager(){}
 
