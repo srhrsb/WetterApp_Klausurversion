@@ -97,7 +97,7 @@ public class MainController {
         System.out.println("update request lng: "+longitude+" lat: "+latitude);
         ApiRequest request = new ApiRequest();
         request.sendRequest(longitude, latitude, this::showCurrentValues );
-        new Scheduler( this::update ).start();
+        new Scheduler( this::update,  SettingsManager.getInstance().getUpdateFrequency()).start();
     }
 
 

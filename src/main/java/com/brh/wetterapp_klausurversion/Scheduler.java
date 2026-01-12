@@ -6,9 +6,11 @@ import java.util.function.Consumer;
 
 public class Scheduler extends Thread {
     private UpdateCallback updateCallback;
+    private long time;
+    public Scheduler( UpdateCallback updateCallback, long time ){
 
-    public Scheduler( UpdateCallback updateCallback ){
-       this.updateCallback = updateCallback;
+        this.updateCallback = updateCallback;
+        this.time = time;
     }
 
     /**
@@ -18,7 +20,7 @@ public class Scheduler extends Thread {
     @Override
     public void run(){
         try {
-            sleep( SettingsManager.getInstance().getUpdateFrequency() * 1000 * 60);
+            sleep( time * 1000 * 60);
             updateCallback.invoke();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
